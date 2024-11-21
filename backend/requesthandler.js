@@ -14,6 +14,8 @@ const transporter = nodemailer.createTransport({
 
 export async function verifyEmail(req,res) {
     const {email}=req.body;
+    console.log(email);
+    
     const otp=Math.floor(Math.random()*1000000);
      // send mail with defined transport object
     const info = await transporter.sendMail({
@@ -82,7 +84,7 @@ export async function verifyEmail(req,res) {
         <p>Thank you for signing up! Please verify your email address by clicking the button below:</p>
         
         <!-- Replace this link with the actual verification URL -->
-        <a href="https://example.com/verify-email?token=YOUR_VERIFICATION_TOKEN" class="button">Verify Email</a>
+        <a href="http://localhost:5173/register" class="button">Verify Email</a>
 
         <p>If you did not sign up for an account, you can ignore this email.</p>
         
@@ -104,13 +106,7 @@ export async function verifyEmail(req,res) {
     })
 }
 
-export async function checkOtp(req,res) {
-    const {email,otp}=req.body;
-    const check=await userSchema.findOne({$and:[{email:email},{otp:otp}]})
-    if(!check)
-        return res.status(403).send({msg:"Otp does not match"})
-    return res.status(200).send({msg:"OTP matched successfully"})
-}
+
 export async function signUp(req,res) {
     try {
         const {email,username,password,cpassword}=req.body;

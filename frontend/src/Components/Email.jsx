@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
-import '';
+import '../CSS/Email.scss';
 
 function Email() {
   const navigate=useNavigate();
