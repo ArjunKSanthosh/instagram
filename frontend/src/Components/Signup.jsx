@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import '../CSS/Signup.css'; 
 
 function Signup() {
   const navigate=useNavigate();
+  const email=localStorage.getItem('email')
     const [user,setUser]=useState({
-      email:"",
+      email:email,
       username:"",
       password:"",
       cpassword:"",
@@ -44,7 +45,6 @@ function Signup() {
           />
         </div>
         <form onSubmit={handleSubmit} className="signup-form">
-        <input type="email" value={user.email} onChange={handleChange} name='email' placeholder="Email" className="input-field" />
           <input type="text" placeholder="Username" value={user.username} onChange={handleChange} name='username' className="input-field" />
           <input type="password" placeholder="Password" value={user.password} onChange={handleChange} name='password' className="input-field" />
           <input type="password" placeholder="Confirm Password" value={user.cpassword} onChange={handleChange} name='cpassword' className="input-field" />
@@ -52,7 +52,7 @@ function Signup() {
           <button type="submit" className="signup-btn">Sign Up</button>
         </form>
         <div className="signup-footer">
-          <p>Have an account? <a href="#">Log in</a></p>
+          <p>Have an account? <Link to={'/login'}>Log in</Link> </p>
         </div>
       </div>
     </div>
