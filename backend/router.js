@@ -4,6 +4,6 @@ const router=Router();
 
 router.route("/verifyemail").post(ig.verifyEmail);
 router.route("/signup").post(ig.signUp)
-router.route("/sigin").post(ig.signIn)
+router.route("/signin").post(ig.signIn)
 
 export default router

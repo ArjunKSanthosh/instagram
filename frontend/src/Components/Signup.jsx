@@ -27,6 +27,7 @@ function Signup() {
     console.log(res);
     const result=await res.json();
     if(res.status===201){
+      localStorage.removeItem('email')
       alert(result.msg);
       navigate('/login')
     }

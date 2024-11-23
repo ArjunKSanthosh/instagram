@@ -26,8 +26,9 @@ function Email() {
     console.log(res.data.msg);
     
     console.log(res);
-    const result=await res.json();
+    // const result=await res.json();
     if(res.status===201){
+      localStorage.setItem('email',email)
       alert(res.data.msg);
       navigate('/login')
     }

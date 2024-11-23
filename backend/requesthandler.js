@@ -132,7 +132,8 @@ export async function signUp(req,res) {
 }
 
 export async function signIn(req,res) {
-    console.log(req.body);
+
+        console.log(req.body);
     const {email,password}=req.body;
     if(!(email&&password))
         return res.status(404).send({msg:"feilds are empty"})
@@ -150,4 +151,5 @@ export async function signIn(req,res) {
     const token=await sign({userId:user._id},process.env.JWT_KEY,{expiresIn:"24h"});
     console.log(token);
     return res.status(200).send({msg:"Succefully logged in",token})
+    
 }
