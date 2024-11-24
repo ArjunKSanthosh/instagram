@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Link,useNavigate} from "react-router-dom"
-import '../CSS/Login.css'; // Import the CSS file for styling
+import '../CSS/Login.css'; 
 
 function Login() {
   const navigate=useNavigate();
@@ -18,7 +18,7 @@ function Login() {
     console.log(res);
     const result=await res.json();
     if(res.status===200){
-      sessionStorage.setItem("Auth",result.token)
+      localStorage.setItem("Auth",result.token)
       alert(result.msg)
       navigate('/')
     }
