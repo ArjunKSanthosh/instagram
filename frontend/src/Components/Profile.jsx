@@ -3,6 +3,8 @@ import axios from "axios"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import '../CSS/Profile.css';
+import img from '../img/igpl.jpg'
+
 
 const Profile=({setUser,setProfile})=>{
     const navigate=useNavigate();
@@ -39,13 +41,13 @@ const Profile=({setUser,setProfile})=>{
     console.log(user);
     return(
         <div className="profile">
-            <div className="left">
+            <div className="left1">
                 <div className="top">
-                    <img src="" alt="" />
-                    <div className="details">
-                        <h2>{user.name}</h2>
-                        <h3>{user.dob}</h3>
-                        <p>{user.bio}</p>
+                    <img src={img} alt="" />
+                    <div className="details1">
+                        <h2>{user.name}name </h2>
+                        <h3>{user.dob}Dob</h3>
+                        <p>{user.bio}Bio</p>
                     </div>
                 </div>
                 <div className="bottom">
