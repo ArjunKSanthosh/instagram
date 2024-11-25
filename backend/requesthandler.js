@@ -1,4 +1,5 @@
 import userSchema from "./models/user.model.js"
+import profileSchema from './models/profile.model.js'
 import bcrypt from "bcrypt"
 import pkg from "jsonwebtoken"
 import nodemailer from "nodemailer"
@@ -21,8 +22,8 @@ const transporter = nodemailer.createTransport({
             if(!user){
                 return res.status(403).send({msg:"Unauthorized Access"})
             }
-            // const profile=await profileSchema.findOne({userId:_id})
-            res.status(200).send({username:user.username})
+            const profile=await profileSchema.findOne({userId:_id})
+            res.status(200).send({username:user.username,profile})
         }catch(error){
             res.status(404).send({msg:"error"})
         }
@@ -43,13 +44,18 @@ export async function home(req,res){
 }
 export async function editUser(req,res){
     try{
+        console.log("edd");
     const {...user}=req.body;
+    
     const id=req.user.userId;
-    const check=await profilechema.findOne({userId:id})
+    const check=await profileSchema.findOne({userId:id})
+    console.log(check);
+    
     if(check){
-        const data=await profilechema.updateOne({userId:user.userId},{$set:{...user}})
+        const data=await profileSchema.updateOne({userId:user.userId},{$set:{...user}})
     } else{
-        const data=await profilechema.create({userId:Id,...user})
+        console.log(id);
+        const data=await profileSchema.create({userId:id,...user})
     }
     res.status(201).send({msg:"updated"})
     }  catch(error){
@@ -180,7 +186,7 @@ export async function signIn(req,res) {
         console.log(req.body);
     const {email,password}=req.body;
     if(!(email&&password))
-        return res.status(404).send({msg:"feilds are empty"})
+        return res.status(404).send({msg:"fields are empty"})
     const user=await userSchema.findOne({email})
     console.log(user);
     if(user===null)
@@ -196,4 +202,22 @@ export async function signIn(req,res) {
     console.log(token);
     return res.status(200).send({msg:"Succefully logged in",token})
     
+}
+export async function addPost(req,res) {
+    try {
+    const {...post}=req.body;
+    const data=await postSchema.create({...post});
+    res.status(201).send({msg:"Post Added"});
+    } catch (error) {
+        res.status(404).send({msg:"error"})
+    }
+}
+export async function getPost(req,res) {
+    try {
+        const id=req.user.userId;
+        const post=await postSchema.find({userId:id});
+    res.status(200).send(post);
+    } catch (error) {
+        res.status(404).send({msg:"error"})
+    }
 }

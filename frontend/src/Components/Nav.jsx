@@ -2,9 +2,11 @@ import React from "react";
 import "../CSS/Nav.css"
 import { Link } from "react-router-dom";
 
-const Nav=({user})=>{
+
+const Nav=({user,profile})=>{
     console.log(user);
     
+
 return (
     <div className="navv">
         <div className="left">Instagram</div>

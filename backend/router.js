@@ -10,5 +10,7 @@ router.route("/signup").post(ig.signUp);
 router.route("/signin").post(ig.signIn);
 router.route("/profile").get(Auth,ig.profile);
 router.route("/edituser").post(Auth,ig.editUser);
+router.route("/addpost").post(ig.addPost);
+router.route("/getpost").get(Auth,ig.getPost);
 
 export default router

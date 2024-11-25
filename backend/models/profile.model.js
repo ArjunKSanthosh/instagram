@@ -7,3 +7,5 @@ const profileSchema=new mongoose.Schema({
     bio:{type:String},
     profile:{type:String}
 })
+
+export default mongoose.model.Profiles || mongoose.model("Profile",profileSchema)

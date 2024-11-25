@@ -20,10 +20,11 @@ const Profile=({setUser,setProfile})=>{
                 console.log(res);
                 
                 if(res.status==200){
+                    console.log(res.data.profile);
                     setUser(res.data.username)
                     setProfile(res.data.profile.profile)
                     setData(res.data.profile)
-
+                    
                 }else if(res.status==403){
                     alert(res.data.msg);
                 }
@@ -43,11 +44,11 @@ const Profile=({setUser,setProfile})=>{
         <div className="profile">
             <div className="left1">
                 <div className="top">
-                    <img src={img} alt="" />
+                    <img src={user.profile} alt="" />
                     <div className="details1">
-                        <h2>{user.name}name </h2>
-                        <h3>{user.dob}Dob</h3>
-                        <p>{user.bio}Bio</p>
+                        <h2>{user.name} </h2>
+                        <h3>{user.dob}</h3>
+                        <p>{user.bio}</p>
                     </div>
                 </div>
                 <div className="bottom">
@@ -57,7 +58,9 @@ const Profile=({setUser,setProfile})=>{
 
                 </div>
             </div>
-            <div className="right"></div>
+            <div className="right">
+                
+            </div>
         </div>
     )
 }
