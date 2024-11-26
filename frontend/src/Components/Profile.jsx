@@ -12,7 +12,8 @@ const Profile=({setUser,setProfile})=>{
     const [user,setData]=useState({})
     const [posts,setPost]=useState([])
     useEffect(()=>{
-        getDetails()
+        getDetails();
+        getPosts();
     },[])
     const getDetails=async()=>{
         if(value!==null){
@@ -21,7 +22,7 @@ const Profile=({setUser,setProfile})=>{
                 console.log(res);
                 
                 if(res.status==200){
-                    console.log(res.data.profile);
+                    // console.log(res.data.profile);
                     setUser(res.data.username)
                     setProfile(res.data.profile.profile)
                     setData(res.data.profile)
@@ -41,10 +42,14 @@ const Profile=({setUser,setProfile})=>{
         }
     }
     const getPosts=async()=>{
-        const res=await axios.get("http://localhost:3000/api/getPost",{headers:{"Authorization":`Bearer ${value}`}})
+        const res=await axios.get("http://localhost:3000/api/getpost",{headers:{"Authorization":`Bearer ${value}`}})
+        console.log(res);
+        
         setPost(res.data)
+        
     }
-    console.log(user);
+    console.log(posts);
+    
     return(
         <div className="profile">
             <div className="left1">
@@ -66,7 +71,7 @@ const Profile=({setUser,setProfile})=>{
             <div className="right">
                 <div className="post">
                    {posts.map((post)=>{
-                    <img src={post.profile} alt="" />
+                    return <img src={post.photos[0]} alt="" />
                    })}
                 </div>
             </div>

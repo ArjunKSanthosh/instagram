@@ -206,9 +206,11 @@ export async function signIn(req,res) {
 }
 export async function addPost(req,res) {
     try {
+
     const {...post}=req.body;
-   console.log(post);
     const data=await postSchema.create({...post});
+    console.log(data);
+    
     res.status(201).send({msg:"Post Added"});
     } catch (error) {
         res.status(404).send({msg:"error"})
@@ -216,8 +218,11 @@ export async function addPost(req,res) {
 }
 export async function getPost(req,res) {
     try {
+        console.log("jjj");
+        
         const id=req.user.userId;
         const post=await postSchema.find({userId:id});
+        console.log(post);
     res.status(200).send(post);
     } catch (error) {
         res.status(404).send({msg:"error"})

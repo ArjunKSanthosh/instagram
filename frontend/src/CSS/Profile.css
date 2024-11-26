@@ -46,3 +46,7 @@ button{
     width: 10%;
     background-color: violet;
 }
+.post img{
+    height: 100%;
+    width: 80%;
+}

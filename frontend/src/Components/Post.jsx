@@ -50,7 +50,9 @@ const getDetails=async()=>{
     setCurrentTime(new Date().toLocaleTimeString())
     console.log(postDate);
     console.log(post);
-    const res=await axios.post("http://localhost:3000/api/addpost",{...post,photos,postTime,postDate},{headers:{"Content-Type":"application/json"}});
+    console.log(photos);
+    
+    const res=await axios.post("http://localhost:3000/api//addpost",{...post,photos,postTime,postDate},{headers:{"Content-Type":"application/json"}});
     console.log(res);
     if(res.status==201){
       alert(res.data.msg)
