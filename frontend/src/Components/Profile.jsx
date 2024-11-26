@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import axios from "axios"
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../CSS/Profile.css';
 import img from '../img/igpl.jpg'
 
@@ -10,6 +10,7 @@ const Profile=({setUser,setProfile})=>{
     const navigate=useNavigate();
     const value=localStorage.getItem('Auth');
     const [user,setData]=useState({})
+    const [posts,setPost]=useState([])
     useEffect(()=>{
         getDetails()
     },[])
@@ -39,6 +40,10 @@ const Profile=({setUser,setProfile})=>{
 
         }
     }
+    const getPosts=async()=>{
+        const res=await axios.get("http://localhost:3000/api/getPost",{headers:{"Authorization":`Bearer ${value}`}})
+        setPost(res.data)
+    }
     console.log(user);
     return(
         <div className="profile">
@@ -59,7 +64,11 @@ const Profile=({setUser,setProfile})=>{
                 </div>
             </div>
             <div className="right">
-                
+                <div className="post">
+                   {posts.map((post)=>{
+                    <img src={post.profile} alt="" />
+                   })}
+                </div>
             </div>
         </div>
     )

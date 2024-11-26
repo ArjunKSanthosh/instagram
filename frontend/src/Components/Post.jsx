@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './Post.scss'
+import '../CSS/Post.scss'
 
 const Post = ({setUser,setProfile}) => {
     const navigate=useNavigate();
@@ -50,7 +50,7 @@ const getDetails=async()=>{
     setCurrentTime(new Date().toLocaleTimeString())
     console.log(postDate);
     console.log(post);
-    const res=await axios.post("http://localhost:3000/api/addpost",{...post,photos,postTime,postDate},{Headers:{"Content-Type":"application/json"}});
+    const res=await axios.post("http://localhost:3000/api/addpost",{...post,photos,postTime,postDate},{headers:{"Content-Type":"application/json"}});
     console.log(res);
     if(res.status==201){
       alert(res.data.msg)

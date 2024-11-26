@@ -1,5 +1,6 @@
 import userSchema from "./models/user.model.js"
 import profileSchema from './models/profile.model.js'
+import postSchema from './models/post.model.js'
 import bcrypt from "bcrypt"
 import pkg from "jsonwebtoken"
 import nodemailer from "nodemailer"
@@ -206,6 +207,7 @@ export async function signIn(req,res) {
 export async function addPost(req,res) {
     try {
     const {...post}=req.body;
+   console.log(post);
     const data=await postSchema.create({...post});
     res.status(201).send({msg:"Post Added"});
     } catch (error) {

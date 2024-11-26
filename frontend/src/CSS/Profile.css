@@ -41,3 +41,8 @@ button{
     height: 150px;
     width: 150px;
 }
+.post{
+    height: 20vh;
+    width: 10%;
+    background-color: violet;
+}

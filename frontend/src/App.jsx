@@ -7,6 +7,7 @@ import Signup from './Components/Signup';
 import Nav from './Components/Nav';
 import Profile from './Components/Profile';
 import AddPro from './Components/Addpro';
+import Post from './Components/Post';
 const App = () => {
   const [user,setUser]=useState("");
   const [profile,setProfile]=useState("");
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/register' Component={Signup}/>
         <Route path='/profile' element={<Profile setUser={setUser} setProfile={setProfile}/>}/>
         <Route path='/addprodetails' element={<AddPro  setUser={setUser} setProfile={setProfile}/>}/>
+        <Route path='/addpost' element={<Post  setUser={setUser} setProfile={setProfile}/>}/>
       </Routes>
     </BrowserRouter>
   )
