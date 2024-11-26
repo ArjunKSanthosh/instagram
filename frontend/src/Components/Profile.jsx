@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import axios from "axios"
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import '../CSS/Profile.css';
+import '../CSS/Profile.scss';
 import img from '../img/igpl.jpg'
 
 
@@ -69,10 +69,12 @@ const Profile=({setUser,setProfile})=>{
                 </div>
             </div>
             <div className="right">
-                <div className="post">
-                   {posts.map((post)=>{
-                    return <img src={post.photos[0]} alt="" />
-                   })}
+                    <h2>ALL POSTS</h2>
+                <div className="post1">
+                   {posts.map((post)=><Link key={post._id} className='post' to={`/postdetails/${post._id}`}>
+                     <img src={post.photos[0]} alt="" />
+                    </Link>
+                   )}
                 </div>
             </div>
         </div>
