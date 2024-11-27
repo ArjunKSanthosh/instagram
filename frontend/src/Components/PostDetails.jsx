@@ -2,6 +2,7 @@ import React ,{useState,useEffect} from "react";
 import axios from 'axios'
 import { useNavigate,useParams } from "react-router-dom";
 import '../CSS/PostDetails.scss';
+import img from '../img/black heart.png'
 
 
 const PostD=({setUser,setProfile})=>{
@@ -47,6 +48,7 @@ const postDetails=async()=>{
         <label htmlFor="desc">
             
         </label>
+        <img src={img} alt="" />
        <h3 id='desc'>{posts.description}</h3>
         <label htmlFor="date"></label>
        <h3 id='date'>{posts.postDate}</h3>

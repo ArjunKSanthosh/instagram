@@ -241,3 +241,11 @@ export async function postDetails(req,res) {
     }
 
 }
+export async function getPosts(req,res) {
+    try {
+        const post=await postSchema.find({});
+        return res.status(200).send(post);
+    } catch (error) {
+        res.status(404).send({msg:"error"})
+    }
+}

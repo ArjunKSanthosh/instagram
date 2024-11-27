@@ -33,5 +33,9 @@
         align-items: center;
         overflow: scroll;
         scrollbar-width: none;
+        img{
+            height: 30px;
+            width: 30px;
+        }
     }
 }

@@ -13,5 +13,6 @@ router.route("/edituser").post(Auth,ig.editUser);
 router.route("/addpost").post(ig.addPost);
 router.route("/getpost").get(Auth,ig.getPost);
 router.route("/postdetails/:_id").get(Auth,ig.postDetails);
+router.route("/getposts").get(ig.getPosts);
 
 export default router
